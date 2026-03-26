@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Medical Content Scanner Design System - Health-focused, accessible design */
+
+@layer base {
+  :root {
+    /* Base colors - Clean medical whites and soft grays */
+    --background: 210 20% 98%;
+    --foreground: 210 15% 20%;
+
+    /* Card system - Elevated surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 20%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 15% 20%;
+
+    /* Primary - Medical teal/blue for trust and healthcare */
+    --primary: 195 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 195 70% 85%;
+    --primary-glow: 195 85% 65%;
+
+    /* Secondary - Calming sage green */
+    --secondary: 150 25% 88%;
+    --secondary-foreground: 150 15% 25%;
+
+    /* Muted tones - Accessible grays */
+    --muted: 210 15% 92%;
+    --muted-foreground: 210 10% 45%;
+
+    /* Accent - Warm success green */
+    --accent: 142 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 142 45% 85%;
+
+    /* Destructive - Gentle medical red */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Interactive elements */
+    --border: 210 20% 88%;
+    --input: 210 20% 95%;
+    --ring: 195 85% 45%;
+
+    /* Medical app specific gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Shadows for depth */
+    --shadow-card: 0 2px 10px -2px hsl(var(--primary) / 0.1);
+    --shadow-hover: 0 8px 25px -8px hsl(var(--primary) / 0.15);
+
+    /* Border radius system */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode - Professional medical dark theme */
+    --background: 210 15% 8%;
+    --foreground: 210 20% 92%;
+
+    --card: 210 15% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 210 15% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 195 85% 55%;
+    --primary-foreground: 210 15% 8%;
+    --primary-light: 195 70% 15%;
+    --primary-glow: 195 85% 65%;
+
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 210 20% 92%;
+
+    --muted: 210 15% 12%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 142 70% 50%;
+    --accent-foreground: 210 15% 8%;
+    --accent-light: 142 45% 15%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 210 20% 92%;
+
+    --border: 210 15% 20%;
+    --input: 210 15% 15%;
+    --ring: 195 85% 55%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
+    /* Dark mode shadows */
+    --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.3);
+    --shadow-hover: 0 8px 25px -8px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)) 60%, hsl(var(--muted)) 100%);
+  }
+
+  /* Custom animations for medical app */
+  @keyframes scan-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  .animate-scan-pulse {
+    animation: scan-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+
+  /* Glassmorphism Panel Utilities */
+  .glass-panel {
+    @apply backdrop-blur-xl shadow-2xl;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .glass-header {
+    @apply backdrop-blur-md;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+}
